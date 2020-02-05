@@ -5,13 +5,20 @@
 #include <stdlib.h>
 #include <sstream>
 #include <fstream>
-#include <Windows.h>
 
 #include "Student.h"
 #include "Group.h"
 #include "Dean.h"
 
 using namespace std;
+
+
+#ifdef _MSC_VER
+#include <Windows.h>
+bool isWin = true;
+#else 
+bool isWin = false;
+#endif
 
 vector<string> split( string s, char delimiter) {
 	vector <string> tokens;
@@ -24,9 +31,12 @@ vector<string> split( string s, char delimiter) {
 	return tokens;
 }
 int main() {
-	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8);
-	//setlocale(LC_CTYPE, "rus");
+	//для кодировки UTF-8
+	if (isWin) {
+		SetConsoleCP(CP_UTF8);
+		SetConsoleOutputCP(CP_UTF8);
+	}
+
 	srand(time(0));
 	Dean IMIKN{ "IMIKN" };
 	fstream in("studentsData.txt");

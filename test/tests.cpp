@@ -64,7 +64,7 @@ TEST(lab5, test5)
 	IMIKN.addStudentToGroup("Ivanov Ivan", "18PMI-1");
 	IMIKN.addStudentToGroup("Petrov Petr", "18PMI-1");
 	IMIKN.addStudentToGroup("Vasiliev Vasiliy", "18PMI-1");
-	EXPECT_EQ(IMIKN.searchGroupByName("18PMI-2")->getGroupName(), "18PMI-2");
+	EXPECT_EQ(IMIKN.searchGroupByName("18PMI-1")->getGroupName(), "18PMI-1");
 }
 
 TEST(lab5, test6)
@@ -84,6 +84,11 @@ TEST(lab5, test7)
 	IMIKN.addStudentToGroup("Ivanov Ivan", "18PMI-1");
 	IMIKN.addStudentToGroup("Petrov Petr", "18PMI-1");
 	IMIKN.addStudentToGroup("Vasiliev Vasiliy", "18PMI-1");
+	for (int i = 0; i < 5; i++) {
+		IMIKN.addMarkToStudent("Ivanov Ivan", "18PMI-1", 10);
+		IMIKN.addMarkToStudent("Petrov Petr", "18PMI-1", 5);
+		IMIKN.addMarkToStudent("Vasiliev Vasiliy", "18PMI-1", 0);
+	}
 	IMIKN.expelStudentsByAverageMark(4);
 	EXPECT_EQ(IMIKN.getNumberOfStudentsInGroup("18PMI-1"), 2);
 }

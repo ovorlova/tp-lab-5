@@ -8,9 +8,9 @@
 Dean::Dean(const std::string& name) {
 	this->name = name;
 }
-void Dean::createGroup(const std::string& groupName, const std::string& specialization) {
+Group* Dean::createGroup(const std::string& groupName, const std::string& specialization) {
 	groups.push_back(Group{ groupName, specialization });
-	//groups[groups.size() - 1].chooseMonitor();
+	return &groups[groups.size() - 1];
 }
 void Dean::addStudentToGroup(const std::string& studentName, const std::string& groupName) {
 	currentCounterID++;
@@ -26,7 +26,7 @@ Group* Dean::trasferStudentToNewGroup(const std::string& studentName, const std:
 		newGroup->addStudent(*student);
 		currentGroup->expelStudent(*student);
 	};
-	return  newGroup;
+	return newGroup;
 }
 int Dean::expelStudentsByAverageMark(double mark) {
 	int expelCounter = 0;
@@ -72,9 +72,10 @@ Group* Dean::searchGroupByName(std::string groupName) {
 	 student->addMark(mark);
 }
 
- void Dean::chooseMonitorInGroup(const std::string& groupName) {
+std::string Dean::chooseMonitorInGroup(const std::string& groupName) {
 	 Group* group = searchGroupByName(groupName);
 	 group->chooseMonitor();
+	 return group->monitor->getName();
  }
 
  void Dean::updateData(const std::string& file) {
@@ -84,4 +85,17 @@ Group* Dean::searchGroupByName(std::string groupName) {
 			 fout << student.getName() << ":" << group.getGroupName() << std::endl;
 		 }
 	 }
+ }
+
+ double Dean::getAverageMarkInGroup(const std::string& name) {
+	 return searchGroupByName(name)->calculateAverageMarkInGroup();
+ }
+ double Dean::getAverageMarkOfStudent(const std::string& name, const std::string& groupName) {
+	 Group* group = searchGroupByName(groupName);
+	 Student* student = group->searchStudentByName(name);
+	 return student->calculateAverage();
+ }
+
+ int Dean::getNumberOfStudentsInGroup(const std::string& groupName){
+	 return searchGroupByName(groupName)->listOfStudents.size();
  }

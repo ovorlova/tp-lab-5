@@ -17,9 +17,7 @@ public:
 	Group* getGroup() const;
 	std::vector<int> getMarks() const;
 	double calculateAverage() const;
-	
 	void addToGroup(Group* newGroup);
-	
 	friend class Dean;
 };
 

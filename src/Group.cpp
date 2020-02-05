@@ -28,7 +28,7 @@ Student* Group::searchStudentByName(std::string name) {
 	return nullptr;
 }
 Student* Group::searchStudentById(std::string id) {
-	for (auto student : listOfStudents) {
+	for (auto & student : listOfStudents) {
 		if (student.getId() == id) {
 			return &student;
 		}

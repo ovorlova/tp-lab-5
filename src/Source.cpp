@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <sstream>
 #include <fstream>
-//#include <Windows.h>
+#include <Windows.h>
 
 #include "Student.h"
 #include "Group.h"
@@ -24,8 +24,8 @@ vector<string> split( string s, char delimiter) {
 	return tokens;
 }
 int main() {
-	//SetConsoleCP(CP_UTF8);
-	//SetConsoleOutputCP(CP_UTF8);
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8);
 	//setlocale(LC_CTYPE, "rus");
 	srand(time(0));
 	Dean IMIKN{ "IMIKN" };

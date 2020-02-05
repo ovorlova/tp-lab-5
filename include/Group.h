@@ -1,4 +1,4 @@
-#ifndef GROUP_H
+﻿#ifndef GROUP_H
 #define GROUP_H
 
 #include "Student.h"
@@ -13,7 +13,7 @@ private:
 	std::string name;
 	std::string specialization;
 	std::vector<Student> listOfStudents;
-	Student* monitor;
+	Student* monitor; //староста
 	void addStudent(Student);
 	void expelStudent(Student);
 	Student* chooseMonitor();

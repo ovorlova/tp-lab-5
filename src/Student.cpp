@@ -12,7 +12,7 @@ double Student::calculateAverage() const {
 	if (marks.size() == 0) {
 		return 0;
 	}
-	for (auto mark : marks) {
+	for (auto & mark : marks) {
 		sum += mark;
 	}
 	return sum / marks.size();

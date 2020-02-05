@@ -15,9 +15,12 @@ using namespace std;
 
 #ifdef _MSC_VER
 #include <Windows.h>
-bool isWin = true;
+void setConsole() {
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8);
+}
 #else 
-bool isWin = false;
+void setConsole() {}
 #endif
 
 vector<string> split( string s, char delimiter) {
@@ -32,11 +35,7 @@ vector<string> split( string s, char delimiter) {
 }
 int main() {
 	//для кодировки UTF-8
-	if (isWin) {
-		SetConsoleCP(CP_UTF8);
-		SetConsoleOutputCP(CP_UTF8);
-	}
-
+	setConsole();
 	srand(time(0));
 	Dean IMIKN{ "IMIKN" };
 	fstream in("studentsData.txt");
